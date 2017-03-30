@@ -18,6 +18,6 @@ gradle.properties
 gradlew
 gradlew.bat
 local.properties
-settings.gradle
+#settings.gradle
 yjboRatingBar.iml
 app.iml
