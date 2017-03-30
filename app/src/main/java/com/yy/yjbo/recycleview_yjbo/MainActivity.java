@@ -25,7 +25,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView swipeTarget;
     private MainActivity mContext;
-    private int showGideCount = 2;
+    private int showGideCount = 3;
     private HuiAdapter huiAdapter;
     private List<HashMap<String, Object>> listHash = new ArrayList<>();
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         swipeTarget = (RecyclerView) findViewById(R.id.swipe_target);
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, showGideCount);//网格布局
         swipeTarget.setLayoutManager(layoutManager);
-        swipeTarget.addItemDecoration(new DividerGridItemDecoration(mContext));
+
 
         huiAdapter = new HuiAdapter();
 
@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
         listHash.clear();
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 56; i++) {
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("imageInt", "");
             hashMap.put("acid", "acid" + i);
-            hashMap.put("wordStr", "wordStr" + i);//真实名称
+            hashMap.put("wordStr", "菜单" + i);//真实名称
             hashMap.put("compoCode", "compoCode" + i);//别名
             hashMap.put("compoUrl", "compoUrl" + i);
             hashMap.put("biaozhi", "biaozhi" + i);
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         }
         huiAdapter.bindData(listHash, mContext);
         setHeader(swipeTarget);
+        LogUtils.d("==测试网格线是先走DividerGridItemDecoration类方法的还是先走adapter的===");
+        swipeTarget.addItemDecoration(new DividerGridItemDecoration(mContext,1,1));
         swipeTarget.setAdapter(huiAdapter);
     }
     private void setHeader(RecyclerView recyclerView) {

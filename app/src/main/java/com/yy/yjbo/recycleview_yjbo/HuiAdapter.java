@@ -164,7 +164,7 @@ public class HuiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final String compoCode = (String) mlistHash.get(pos).get("compoCode");
 
 
-
+        ((huiHolder) holder).itemTxt.setText(""+wordStr);
         if (mListener == null) return;
         ((huiHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
