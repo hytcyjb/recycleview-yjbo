@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,9 +46,6 @@ public class HuiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }else {
                         return 1;
                     }
-//                    return getItemViewType(position) == TYPE_HEADER
-//                            ? gridManager.getSpanCount() : 1
-//                            || getItemViewType(position) == TYPE_FOOTER ?gridManager.getSpanCount(): 1;
                 }
             });
         }
@@ -64,9 +63,44 @@ public class HuiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+//    @Override
+//    public void onAttachedToRecyclerView(RecyclerView recyclerView)
+//    {
+//        innerAdapter.onAttachedToRecyclerView(recyclerView);
+//
+//        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+//        if (layoutManager instanceof GridLayoutManager)
+//        {
+//            final GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
+//            final GridLayoutManager.SpanSizeLookup spanSizeLookup = gridLayoutManager.getSpanSizeLookup();
+//
+//            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup()
+//            {
+//                @Override
+//                public int getSpanSize(int position)
+//                {
+//                    int viewType = getItemViewType(position);
+//                    if (mHeaderViews.get(viewType) != null)
+//                    {
+//                        return layoutManager.getSpanCount();
+//                    } else if (mFootViews.get(viewType) != null)
+//                    {
+//                        return layoutManager.getSpanCount();
+//                    }
+//                    if (oldLookup != null)
+//                        return oldLookup.getSpanSize(position);
+//                    return 1;
+//                }
+//            });
+//            gridLayoutManager.setSpanCount(gridLayoutManager.getSpanCount());
+//        }
+//    }
+
     public void bindData(List<HashMap<String, Object>> listHash, Context context) {
         this.mlistHash = listHash;
         this.mContext = context;
+
+        LogUtils.i("Jerry");
         notifyDataSetChanged();
     }
 
@@ -128,6 +162,9 @@ public class HuiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final String wordStr = (String) mlistHash.get(pos).get("wordStr");
         final String compoUrl = (String) mlistHash.get(pos).get("compoUrl");
         final String compoCode = (String) mlistHash.get(pos).get("compoCode");
+
+
+
         if (mListener == null) return;
         ((huiHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +172,7 @@ public class HuiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     mListener.onItemClick(pos, compoUrl, compoCode, wordStr);
             }
         });
+
     }
 
     public int getRealPosition(RecyclerView.ViewHolder holder) {
