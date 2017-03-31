@@ -1,4 +1,4 @@
-package com.yy.yjbo.recycleview_yjbo;
+package com.yy.yjbo.recycleview_yjbo.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.orhanobut.logger.Logger;
+import com.yy.yjbo.recycleview_yjbo.util.LogUtils;
+import com.yy.yjbo.recycleview_yjbo.R;
 
 import java.util.HashMap;
 import java.util.List;
