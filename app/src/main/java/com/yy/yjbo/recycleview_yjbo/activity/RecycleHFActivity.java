@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.yy.yjbo.recycleview_yjbo.R;
 import com.yy.yjbo.recycleview_yjbo.adapter.HuiAdapter;
+import com.yy.yjbo.recycleview_yjbo.test.DividerGridItemDecorationCopy;
 import com.yy.yjbo.recycleview_yjbo.util.DividerGridItemDecoration;
 import com.yy.yjbo.recycleview_yjbo.util.LogUtils;
 
@@ -54,7 +55,7 @@ public class RecycleHFActivity extends AppCompatActivity {
 
         listHash.clear();
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 56; i++) {
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("imageInt", "");
             hashMap.put("acid", "acid" + i);
@@ -67,7 +68,7 @@ public class RecycleHFActivity extends AppCompatActivity {
         huiAdapter.bindData(listHash, mContext);
         setHeader(swipeTarget);
         LogUtils.d("==测试网格线是先走DividerGridItemDecoration类方法的还是先走adapter的===");
-        swipeTarget.addItemDecoration(new DividerGridItemDecoration(mContext,1,1));
+        swipeTarget.addItemDecoration(new DividerGridItemDecorationCopy(mContext,1,1));
         swipeTarget.setAdapter(huiAdapter);
     }
     private void setHeader(RecyclerView recyclerView) {

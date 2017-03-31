@@ -19,7 +19,8 @@ import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.yy.yjbo.recycleview_yjbo.LogUtils;
+import com.yy.yjbo.recycleview_yjbo.R;
+import com.yy.yjbo.recycleview_yjbo.util.LogUtils;
 
 
 /**
@@ -34,8 +35,9 @@ import com.yy.yjbo.recycleview_yjbo.LogUtils;
 public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
 {
 
-    private static final int[] ATTRS = new int[] { android.R.attr.listDivider };
+    private static final int[] ATTRS = new int[] { android.R.attr.listDivider, R.drawable.line_divider1 };
     private Drawable mDivider;
+//    private Drawable mDivider1;
     private int headCount=0;//头部布局
     private int footCount=0;//尾部布局
 
@@ -43,6 +45,7 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
     {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         mDivider = a.getDrawable(0);
+//        mDivider1 = a.getDrawable(1);
         a.recycle();
         this.headCount = mheadCount;
         this.footCount = mfootCount;
@@ -62,7 +65,7 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
     {
 
         drawHorizontal(c, parent);
-        drawVertical(c, parent);
+//        drawVertical(c, parent);
 
     }
 
@@ -83,6 +86,9 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
     }
     /**
      *  顶部的和尾部的得去除（setAdapter时得传过来），其余的就自己处理得注意第一行将显示顶部的最上一横线显示出来，或者显示最下一行横线
+     *  二者的区别:http://www.2cto.com/kf/201109/105626.html
+     *    当listView 中 item 比较少，不需要滚动就可以现实全部 二者是等价的。
+     *    当item个数多 要滚动时 getChildCount()是当前可见的item个数; getCount()是全部。
      * @author yjbo  @time 2017/3/30 17:28
      */
     public void drawHorizontal(Canvas c, RecyclerView parent)
@@ -97,9 +103,13 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
         {
 //            if (i == 0 || i == childCount-1) continue;
 //            if (i != 3) continue;
-
+            if (i == childCount -1) continue;
             final View child = parent.getChildAt(i);
-
+            LogUtils.d("==child == null=00="+i);
+            if (child == null) {
+                LogUtils.d("==child == null=="+i);
+                continue;
+            }
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
 
@@ -117,7 +127,7 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
                 final int left0 = parent.getChildAt(0).getLeft() - params.leftMargin;
                 final int right0 = parent.getChildAt(0).getRight() + params.rightMargin
                         + mDivider.getIntrinsicWidth();
-                final int top0 =  params.bottomMargin + headHight;
+                final int top0 =  params.bottomMargin + headHight - mDivider.getIntrinsicHeight();
                 final int bottom0 = top0 + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left0, top0, right0, bottom0);
                 LogUtils.d("==顶部==" + params.bottomMargin+"===="+child.getBottom()+"----"+mDivider.getIntrinsicHeight()+"=="+left0
@@ -131,21 +141,29 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
 //            }
 //            mDivider.setBounds(left, top-16, right, bottom-16);
             if (headCount > i){//有头尾布局
+//                final int left = child.getLeft() - params.leftMargin;
+//                final int right = child.getRight() + params.rightMargin
+//                        + mDivider.getIntrinsicWidth();
+//                final int top = child.getBottom() + params.bottomMargin - mDivider.getIntrinsicHeight();
+//                final int bottom = top + mDivider.getIntrinsicHeight();
+//
 //                mDivider.setBounds(left, top, right, bottom);
-//                LogUtils.d("==有头尾布局=="+left+"----"+top+"----"+right+"----"+bottom);
+//                LogUtils.d("==上下左右的边距=111="+i+"===" + left + "----" + top + "----" + right + "----" + bottom);
 //                mDivider.draw(c);
             }else {
                 if (footCount != 0 && i >= childCount-footCount){//此时不绘制尾部
                 }else {
-                    final int left = child.getLeft() - params.leftMargin;
-                    final int right = child.getRight() + params.rightMargin
-                            + mDivider.getIntrinsicWidth();
-                    final int top = child.getBottom() + params.bottomMargin - mDivider.getIntrinsicHeight();
-                    final int bottom = top + mDivider.getIntrinsicHeight();
+//                    if (i != 1) {
+                        final int left = child.getLeft() - params.leftMargin;
+                        final int right = child.getRight() + params.rightMargin
+                                + mDivider.getIntrinsicWidth();
+                        final int top = child.getBottom() + params.bottomMargin - mDivider.getIntrinsicHeight();
+                        final int bottom = top + mDivider.getIntrinsicHeight();
 
-                    mDivider.setBounds(left, top, right, bottom);
-                    LogUtils.d("==上下左右的边距==" + left + "----" + top + "----" + right + "----" + bottom);
-                    mDivider.draw(c);
+                        mDivider.setBounds(left, top, right, bottom);
+                        LogUtils.d("==上下左右的边距==" + i + "===" + left + "----" + top + "----" + right + "----" + bottom);
+                        mDivider.draw(c);
+//                    }
                 }
 
             }

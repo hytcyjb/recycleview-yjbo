@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         listHash.clear();
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 53; i++) {
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("imageInt", "");
             hashMap.put("acid", "acid" + i);
