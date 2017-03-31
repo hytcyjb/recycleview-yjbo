@@ -65,7 +65,7 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
     {
 
         drawHorizontal(c, parent);
-//        drawVertical(c, parent);
+        drawVertical(c, parent);
 
     }
 
@@ -124,10 +124,10 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
                 for (int j=0;j<headCount;j++){//这是在头部高度相等时可以（*headCount），否则则for循环相加
                     headHight += parent.getChildAt(j).getBottom();
                 }
-                final int left0 = parent.getChildAt(0).getLeft() - params.leftMargin;
+                final int left0 = parent.getChildAt(0).getLeft() - params.leftMargin - mDivider.getIntrinsicWidth();
                 final int right0 = parent.getChildAt(0).getRight() + params.rightMargin
-                        + mDivider.getIntrinsicWidth();
-                final int top0 =  params.bottomMargin + headHight - mDivider.getIntrinsicHeight();
+                        ;
+                final int top0 =  0 + headHight;//child.getBottom() + params.bottomMargin
                 final int bottom0 = top0 + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left0, top0, right0, bottom0);
                 LogUtils.d("==顶部==" + params.bottomMargin+"===="+child.getBottom()+"----"+mDivider.getIntrinsicHeight()+"=="+left0
@@ -157,7 +157,7 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
                         final int left = child.getLeft() - params.leftMargin;
                         final int right = child.getRight() + params.rightMargin
                                 + mDivider.getIntrinsicWidth();
-                        final int top = child.getBottom() + params.bottomMargin - mDivider.getIntrinsicHeight();
+                        final int top = child.getBottom() + params.bottomMargin- mDivider.getIntrinsicHeight();
                         final int bottom = top + mDivider.getIntrinsicHeight();
 
                         mDivider.setBounds(left, top, right, bottom);
