@@ -25,7 +25,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView swipeTarget;
     private MainActivity mContext;
-    private int showGideCount = 3;
+    private int showGideCount = 5;
     private HuiAdapter huiAdapter;
     private List<HashMap<String, Object>> listHash = new ArrayList<>();
 
