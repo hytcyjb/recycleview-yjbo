@@ -33,7 +33,7 @@ public class RecycleHFActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recycle_hf);
         mContext = this;
 
         testLogger();
@@ -55,7 +55,7 @@ public class RecycleHFActivity extends AppCompatActivity {
 
         listHash.clear();
 
-        for (int i = 0; i < 56; i++) {
+        for (int i = 0; i < 55; i++) {
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("imageInt", "");
             hashMap.put("acid", "acid" + i);

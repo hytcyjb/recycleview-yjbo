@@ -166,6 +166,7 @@ public class HuiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
         ((huiHolder) holder).itemTxt.setText(""+wordStr);
+        ((huiHolder) holder).navigItemIbt.setBackgroundResource(R.mipmap.ic_launcher_round);
         if (mListener == null) return;
         ((huiHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
