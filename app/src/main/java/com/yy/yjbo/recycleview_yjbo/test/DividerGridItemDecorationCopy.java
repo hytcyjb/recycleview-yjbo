@@ -92,7 +92,7 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration
                 +"=-=="+headCount+"=-=="+footCount);
         for (int i = 0; i < childCount; i++)
         {
-            if (i == childCount -1) continue;
+//            if (i == childCount -1) continue;
             final View child = parent.getChildAt(i);
             LogUtils.d("==child == null=00="+i);
             if (child == null) {
