@@ -28,7 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView swipeTarget;
     private MainActivity mContext;
-    private int showGideCount = 5;
+    private int showGideCount = 3;
     private MainAdapter mainAdapter;
     private List<HashMap<String, Object>> listHash = new ArrayList<>();
 
@@ -70,8 +70,12 @@ public class MainActivity extends AppCompatActivity {
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("imageInt", "");
             hashMap.put("acid", "acid" + i);
-            hashMap.put("wordStr", "菜单" + i);//真实名称
-            hashMap.put("compoCode", "compoCode" + i);//别名
+            if (i == 0){
+                hashMap.put("wordStr", "可以点击");
+            }else {
+                hashMap.put("wordStr", "菜单" + i);
+            }
+            hashMap.put("compoCode", "compoCode" + i);
             hashMap.put("compoUrl", "compoUrl" + i);
             hashMap.put("biaozhi", "biaozhi" + i);
             listHash.add(hashMap);
