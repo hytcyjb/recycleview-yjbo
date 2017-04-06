@@ -4,14 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import com.yy.yjbo.recycleview_yjbo.R;
 import com.yy.yjbo.recycleview_yjbo.adapter.MainAdapter;
-import com.yy.yjbo.recycleview_yjbo.util.DividerGridItemDecoration;
+import com.yy.yjbo.recycleview_yjbo.test.DividerGridItemDecorationCopy;
 import com.yy.yjbo.recycleview_yjbo.util.LogUtils;
 
 import java.util.ArrayList;
@@ -19,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * recycleview的各种封装和使用
+ * recycleview的网格线
  *  log打印引用：https://github.com/orhanobut/logger
  * @author yjbo
  * @time 2017/3/29 16:59
@@ -82,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         }
         mainAdapter.bindData(listHash, mContext);
 
-        swipeTarget.addItemDecoration(new DividerGridItemDecoration(mContext,0,0));
+        swipeTarget.addItemDecoration(new DividerGridItemDecorationCopy(mContext,0,0));
         swipeTarget.setAdapter(mainAdapter);
     }
     /**

@@ -10,7 +10,6 @@ import android.view.View;
 import com.yy.yjbo.recycleview_yjbo.R;
 import com.yy.yjbo.recycleview_yjbo.adapter.HuiAdapter;
 import com.yy.yjbo.recycleview_yjbo.test.DividerGridItemDecorationCopy;
-import com.yy.yjbo.recycleview_yjbo.util.DividerGridItemDecoration;
 import com.yy.yjbo.recycleview_yjbo.util.LogUtils;
 
 import java.util.ArrayList;
