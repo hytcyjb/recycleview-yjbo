@@ -155,9 +155,12 @@ public class DividerGridItemDecorationCopy extends RecyclerView.ItemDecoration {
                 } else {
                     //头部布局的高度，
                     int headHight = 0;
-//                    for (int j = 0; j < headCount; j++) {//这是在头部高度相等时可以（*headCount），否则则for循环相加
-//                        headHight += parent.getChildAt(j).getBottom() - parent.getChildAt(j).getTop();
-//                    }
+                    //说明：当item的总个数（除了头尾布局）正好除以每行的个数，此时即需要设置高度
+                    if ((childCount2 - footCount - headCount) % spanCount != 0) {
+                        for (int j = 0; j < headCount; j++) {//这是在头部高度相等时可以（*headCount），否则则for循环相加
+                            headHight += parent.getChildAt(j).getBottom() - parent.getChildAt(j).getTop();
+                        }
+                    }
                     if (i == headCount) {//添加最左侧的一个竖条
                     LogUtils.d("==for循环参数===" + childCount + "===" + headCount + "--" + footCount + "==" + childCount2);
                     for (int j = 0; j <= childCount2 - footCount - headCount; j++) {
