@@ -26,7 +26,11 @@ import com.yy.yjbo.recycleview_yjbo.util.LogUtils;
  * <p/>
  * 设置分割线前得提前说明你有没有头部和尾部
  * 条件：1.子item不能有背景图片，有的话就会不显示条目
+ *      2.**注意点：如果使用单一的线则使用系统自带的即可；
+ *
  * <p>
+ * @qq 1457521527
+ * @author yjbo
  * //设置分割线
  * locationList.addItemDecoration((new DividerItemDecoration(this,
  * DividerItemDecoration.VERTICAL_LIST)));
